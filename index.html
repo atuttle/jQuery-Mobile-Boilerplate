@@ -5,18 +5,21 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title> jQuery Mobile Boilerplate </title>
 
-	<!-- Not the most efficient order to load JS + CSS, but allows us to fallback to local copies if the CDN is down, and minimizes the number of times we have to check for success/failure -->
+	<!-- Not the most efficient place or order to load JS + CSS, but allows us to fallback to local copies if the CDN is down, and minimizes the number of times we have to check for success/failure -->
 	<link rel="stylesheet"  href="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.css" />
 	<script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
 	<script src="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
 	<script type="text/javascript">
-		if (typeof jQuery == 'undefined'){
-			document.write(unescape("%3Cscript src='js/jquery-1.6.4.min.js' type='text/javascript'%3E%3C/script%3E"));
-			document.write(unescape("%3Cscript src='js/jquery.mobile-1.0.1.min.js' type='text/javascript'%3E%3C/script%3E"));
+		var _uselocal = (typeof jQuery == 'undefined');
+		if (_uselocal){
 			document.write(unescape("%3Clink rel='stylesheet' href='css/jquery.mobile-1.0.1.min.css' /%3E"));
+			document.write(unescape("%3Cscript src='js/jquery-1.6.4.min.js' type='text/javascript'%3E%3C/script%3E"));
+		}
+		document.write(unescape("%3Cscript src='js/application.js' type='text/javascript'%3E%3C/script%3E"));
+		if (_uselocal){
+			document.write(unescape("%3Cscript src='js/jquery.mobile-1.0.1.min.js' type='text/javascript'%3E%3C/script%3E"));
 		}
 	</script>
-	<script src="js/application.js"></script>
 
 	<!-- if you have a custom theme, add it here -->
 	<link rel="stylesheet"  href="themes/jQuery-Mobile-Boilerplate.css" />
